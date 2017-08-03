@@ -25,7 +25,7 @@ export class Board {
         this.listenForEnterEvent();
     }
 
-    newGame () {
+    newGame ({ withMessage = false } = {}) {
         if (this.board) {
             clearTimeout(this.currentTimeout);
             document.body.removeChild(this.board);
@@ -39,6 +39,8 @@ export class Board {
         this.dotMap = new Map();
         this.currentFood = null;
 
+        this.gameStarted = false;
+
         this.board = this.createBoard();
         document.body.appendChild(this.board);
 
@@ -50,7 +52,10 @@ export class Board {
 
         this.generateFoodDot();
 
-        this.startGame();
+        if (withMessage) {
+            this.scoreCard.textContent = 'Press any key to start game.';
+            this.scoreCard.classList.add('no-content');
+        }
     }
 
     createBoard () {
@@ -141,7 +146,7 @@ export class Board {
             this.scoreCard.appendChild(gameOverDiv);
             gameOverDiv.textContent = 'GAME OVER';
         } else if (this.scoreCard) {
-            this.scoreCard.textContent = '';
+            this.scoreCard.textContent = 'Press any key to start game.';
             this.scoreCard.classList.add('no-content');
         }
 
@@ -223,6 +228,13 @@ export class Board {
         if (Arrows[code]) {
             this.currentDirection = Arrows[code];
             this.generateNextDot({ timeout: false });
+        }
+
+        if (!this.gameStarted) {
+            this.startGame();
+            this.gameStarted = true;
+            this.scoreCard.classList.remove('no-content');
+            this.scoreCard.textContent = 0;
         }
     }
 

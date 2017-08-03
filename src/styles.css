@@ -36,4 +36,5 @@ body {
 
 .score.no-content:before {
     content: '';
+    margin-right: 0;
 }
