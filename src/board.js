@@ -10,7 +10,7 @@ const Arrows = {
 };
 
 export class Board {
-    constructor ({ width = 200, height = 200, speed = 180, dotSize = 10 } = {}) {
+    constructor ({ width = 250, height = 250, speed = 180, dotSize = 10 } = {}) {
         this.width = width;
         this.height = height;
         this.speed = speed;
