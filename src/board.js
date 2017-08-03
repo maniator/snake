@@ -10,7 +10,7 @@ const Arrows = {
 };
 
 export class Board {
-    constructor ({ width = 200, height = 200, speed = 200, dotSize = 10 } = {}) {
+    constructor ({ width = 200, height = 200, speed = 180, dotSize = 10 } = {}) {
         this.width = width;
         this.height = height;
         this.speed = speed;
@@ -227,11 +227,11 @@ export class Board {
     }
 
     removeEvents () {
-        document.removeEventListener('keyup', this.keyupEvent, false);
+        document.removeEventListener('keydown', this.keyupEvent, false);
     }
 
     listenForEnterEvent () {
-        document.addEventListener('keyup', ({code}) => {
+        document.addEventListener('keydown', ({code}) => {
             if (code === 'Enter') {
                 this.newGame();
             }
@@ -239,7 +239,7 @@ export class Board {
     }
 
     listenToEvents () {
-        document.addEventListener('keyup', this.keyupEvent, false);
+        document.addEventListener('keydown', this.keyupEvent, false);
     }
 
     addTitleCard() {
