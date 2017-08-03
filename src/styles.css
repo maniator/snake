@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-family: "Helvetica Neue", sans-serif;
+    margin: 1rem 3rem;
+}
+
+.board {
+    border: 1px solid black;
+    margin: 1rem 3rem;
+    position: relative;
+}
+
+.dot {
+    background: black;
+    position: absolute;
+}
+
+.food {
+    background: blue;
+    border-radius: 50%;
+}
+.score {
+    font-weight: bold;
+    margin-left: 3rem;
+}
+
+.score:before {
+    content: 'Score: ';
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+
+.score.no-content:before {
+    content: '';
+}

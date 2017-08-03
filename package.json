@@ -1,0 +1,17 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bootstrap.js",
+  "scripts": {
+    "build": "rollup src/bootstrap.js -o dist/bootstrap.js",
+    "serve": "serve -i node_modules,package.json,Procfile,.gitignore",
+    "buildAndServe": "npm run build && npm run serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rollup": "^0.45.2",
+    "serve": "^6.0.5"
+  }
+}
