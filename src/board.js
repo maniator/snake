@@ -40,6 +40,7 @@ export class Board {
         this.currentFood = null;
 
         this.gameStarted = false;
+        this.gameFinished = false;
 
         this.board = this.createBoard();
         document.body.appendChild(this.board);
@@ -139,6 +140,8 @@ export class Board {
         clearTimeout(this.currentTimeout);
         this.removeEvents();
 
+        this.gameFinished = true;
+
         const gameOverDiv = document.createElement('div');
         const instructionsDiv = document.createElement('div');
 
@@ -155,6 +158,10 @@ export class Board {
     }
 
     generateNextDot ({ timeout = true } = {}) {
+        if (this.gameFinished) {
+            return;
+        }
+
         const { top, left } = this.currentDot.style;
 
         const topPx = Number(top.match(/\d+/gi));
